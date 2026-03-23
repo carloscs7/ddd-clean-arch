@@ -6,7 +6,39 @@ export class DocumentoRepository{
 
     // LISTAR DOCUMENTOS:
     async listarDocumentos(){
-        
+
         return DocumentoRepository.documentos;
+    }
+
+    // INSERIR DOCUMENTO:
+    async inserirDocumento(documento: Documento){
+
+        DocumentoRepository.documentos.push(documento);
+    }
+
+    // BUSCAR POR ID:
+    async buscarDocumentoPorID(idDocumento: number){
+
+        return DocumentoRepository.documentos.find(doc => doc.idDocumento === idDocumento);
+
+    }
+
+    // REMOVER DOCUMENTO:
+    async removerDocumento(idDocumento: number){
+        DocumentoRepository.documentos = DocumentoRepository.documentos.filter(doc => doc.idDocumento !== idDocumento);
+    }
+
+    // ATUALIZAR DOCUMENTO:
+    async atualizarDocumento(documento: Documento){
+
+        // Buscando a posição em que o documento solicitado para atualizar para dentro do array.
+        const indice = DocumentoRepository.documentos.findIndex(doc => doc.idDocumento === documento.idDocumento);
+
+        if(indice !== -1){
+            DocumentoRepository.documentos[indice] = documento;
+
+        }else{
+            console.log("Documento não encontrado!");
+        }
     }
 }
