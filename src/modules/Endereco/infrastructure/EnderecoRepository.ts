@@ -29,7 +29,7 @@ export class EnderecoRepository {
     async atualizarEndereco(endereco: Endereco) {
 
             
-            const indice = EnderecoRepository.enderecos.findIndex(doc => doc.idEndereco === endereco.idEndereco);
+            const indice = EnderecoRepository.enderecos.findIndex(end => end.idEndereco === endereco.idEndereco);
 
             if (indice !== -1) {
                 EnderecoRepository.enderecos[indice] = endereco;
