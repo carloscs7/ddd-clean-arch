@@ -3,7 +3,6 @@ import { Endereco } from "@/modules/Endereco/Domain/Endereco";
 import { Usuario } from "@/modules/Usuario/Domain/Usuario";
 
 
-
 export class Paciente extends Usuario {
 
     private _idade: number;
@@ -54,7 +53,7 @@ export class Paciente extends Usuario {
         this._altura = altura;
     }
 
-    set endereco(endereco: string){
+    set endereco(endereco: Endereco){
         this. endereco = endereco;
     }
 
