@@ -5,9 +5,9 @@ import { useState } from "react"
 export function TelefoneForm({dadoInicial, onSubmit}:any){
 
     const [ddd, setDdd] = useState(dadoInicial?.ddd || "");
-    const [numeroTelefone, setNumeroTelefone] = useState(dadoInicial.numeroTelefone || "");
-    const [tipoTelefone, setTipoTelefone] = useState(dadoInicial.tipoTelefone || "");
-    const [ativo, setAtivo] = useState (dadoInicial.ativo || "");
+    const [numeroTelefone, setNumeroTelefone] = useState(dadoInicial?.numeroTelefone || "");
+    const [tipoTelefone, setTipoTelefone] = useState(dadoInicial?.tipoTelefone || "");
+    const [ativo, setAtivo] = useState (dadoInicial?.ativo || "");
 
     return(
 
