@@ -1,6 +1,6 @@
 import { PacienteRepository } from "../infrastructure/PacienteRepository";
 
-export class removerPaciente{
+export class RemoverPaciente{
     constructor (private repository = new PacienteRepository())
     {}
 
