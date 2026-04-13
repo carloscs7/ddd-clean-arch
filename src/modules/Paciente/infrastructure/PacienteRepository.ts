@@ -1,44 +1,37 @@
 import { Paciente } from "../Domain/Paciente";
 
-export class PacienteRepository{
+export class PacienteRepository {
 
     private static pacientes: Paciente[] = [];
 
-    // LISTAR PACIENTE:
-    async listarPaciente(){
-
+    async listarPacientes() {
         return PacienteRepository.pacientes;
     }
 
-    // INSERIR PACIENTES:
-    async inserirPacientes(paciente: Paciente){
-
+    async inserirPaciente(paciente: Paciente) {
         PacienteRepository.pacientes.push(paciente);
     }
 
-    // BUSCAR POR ID:
-    async buscarPacientePorID(idPaciente: number){
-
-        return PacienteRepository.pacientes.find(pac => pac.id === idPaciente);
-
+    async buscarPacientePorId(idPaciente: number) {
+        return PacienteRepository.pacientes
+            .find(pac => pac.id === idPaciente);
     }
 
-    // REMOVER PACIENTE:
-    async removerPaciente(idPaciente: number){
-        PacienteRepository.pacientes = PacienteRepository.pacientes.filter(pac => pac.id !== idPaciente);
+    async removerPaciente(idPaciente: number) {
+        PacienteRepository.pacientes =
+            PacienteRepository.pacientes
+                .filter(pac => pac.id !== idPaciente);
     }
 
-    // ATUALIZAR PACIENTE:
-    async atualizarPaciente(paciente: Paciente){
+    async atualizarPaciente(paciente: Paciente) {
 
-        // Buscando a posição em que o documento solicitado para atualizar para dentro do array.
-        const indice = PacienteRepository.pacientes.findIndex(pac => pac.id === paciente.id);
+        const indice = PacienteRepository.pacientes
+            .findIndex(pac => pac.id === paciente.id);
 
-        if(indice !== -1){
+        if (indice !== -1) {
             PacienteRepository.pacientes[indice] = paciente;
-
-        }else{
-            console.log("Documento não encontrado!");
+        } else {
+            throw new Error("Paciente não encontrado!");
         }
     }
 }

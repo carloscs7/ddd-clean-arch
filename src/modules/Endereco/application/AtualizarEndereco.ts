@@ -1,25 +1,30 @@
-import { EnderecoRepository } from "../infrastructure/EnderecoRepository";
+import { EnderecoRepository } from "../Infrastructure/EnderecoRepository";
 
-export class AtualizarEndereco{
+export class AtualizarEndereco {
 
-      constructor(private repository = new EnderecoRepository){}
-        
-        async execute(idEndereco: number, logradouro: string, numero: number, bairro: string, cidade: string, estado: string){
+    constructor(private repository = new EnderecoRepository()) { }
 
-            const end = await this.repository.buscarEnderecoPorID(idEndereco);
+    async execute(
+        idEndereco: number,
+        logradouro: string,
+        numero: number,
+        bairro: string,
+        cidade: string,
+        estado: string
+    ) {
 
-            if (!end){
-                console.log("Endereco não existe");
-            }else{
-                end.logradouro = logradouro;
-                end.numero = numero;
-                end.bairro = bairro;
-                end.cidade = cidade;
-                end.estado = estado;
-            }
+        const end = await this.repository.buscarEnderecoPorId(idEndereco);
 
-            await this.repository.atualizarEndereco(end!);
-                
+        if (!end) {
+            throw new Error("Endereço não existe!");
         }
-    
+
+        end.logradouro = logradouro;
+        end.numero = numero;
+        end.bairro = bairro;
+        end.cidade = cidade;
+        end.estado = estado;
+
+        await this.repository.atualizarEndereco(end);
+    }
 }

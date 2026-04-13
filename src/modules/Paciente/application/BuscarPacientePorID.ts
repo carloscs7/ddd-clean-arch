@@ -1,12 +1,10 @@
-import { PacienteRepository } from "../infrastructure/PacienteRepository";
+import { PacienteRepository } from "../Infrastructure/PacienteRepository";
 
+export class BuscarPacientePorId {
 
-export class BuscarPacientePorID{
-    constructor(private repository = new PacienteRepository())
-    {}
+    constructor(private repository = new PacienteRepository()) { }
 
-    async execute(id: number){
-
-        return this.repository.buscarPacientePorID(id);
+    async execute(id: number) {
+        return this.repository.buscarPacientePorId(id);
     }
 }

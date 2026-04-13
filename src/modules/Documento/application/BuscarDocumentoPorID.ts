@@ -1,11 +1,12 @@
 import { DocumentoRepository } from "../Infrastructure/DocumentoRepository";
 
-export class buscarDocumentoPorID{
+export class BuscarDocumentoPorId{
+
     constructor(private repository = new DocumentoRepository())
     {}
 
     async execute(idDocumento: number){
 
-        return this.repository.buscarDocumentoPorID(idDocumento);
+        return this.repository.buscarDocumentoPorId(idDocumento);
     }
 }
